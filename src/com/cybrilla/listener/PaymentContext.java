@@ -13,7 +13,7 @@ public class PaymentContext implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		emf = Persistence.createEntityManagerFactory("cybrilla");
+		//emf = Persistence.createEntityManagerFactory("cybrilla");
 	}
 
 	@Override
