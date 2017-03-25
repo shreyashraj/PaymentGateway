@@ -27,7 +27,7 @@ import com.cybrilla.entity.PaymentGatewayEntity;
 import com.cybrilla.service.PaymentService;
 import com.cybrilla.serviceimpl.PaymentServiceImpl;
 
-@Path("/paymentagteway")
+@Path("/paymentgateway")
 public class CybrillaRestService {
 	
 		private static Logger logger = LogManager.getLogger(CybrillaRestService.class);
@@ -39,7 +39,7 @@ public class CybrillaRestService {
 	    @Produces("application/json")
 		public Response payment(PaymentGatewayEntity paymentGatewayEntity) {
 
-			logger.info(" ");
+			logger.info(" Running");
 			
 			String payload_to_pg = paymentService.generateMessage(paymentGatewayEntity);
 			Map<String, String> map = new ConcurrentHashMap<String, String>();
@@ -50,6 +50,15 @@ public class CybrillaRestService {
 			Gson gson = new GsonBuilder().create();
 			String response = gson.toJson(map);
 			return Response.ok().entity(response).build();
+		}
+		
+		@GET
+		@Path("/test")
+		@Produces("application/json")
+		public Response test(){
+			String response = "Success";
+			return Response.ok().entity(response).build();
+			
 		}
 
 
